@@ -6,9 +6,12 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
 import "./App.css";
 import { Home } from "./routes/Home";
 import { DataReactRouterDom, dataLoader } from "./routes/DataReactRouterDom";
+import { DataReactQuery } from "./routes/DataReactQuery";
 import { DataUseEffect } from "./routes/DataUseEffect";
 
 const queryClient = new QueryClient();
@@ -31,7 +34,9 @@ function App() {
 
   return (
     <div className="app-wrapper">
+      <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
+      </QueryClientProvider>
     </div>
   );
 }
